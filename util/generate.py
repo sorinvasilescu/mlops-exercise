@@ -1,5 +1,6 @@
 import pandas as pd
 import random
+import os
 from faker import Faker
 
 # Initialize Faker
@@ -19,6 +20,13 @@ data = {
 
 # Create DataFrame
 df = pd.DataFrame(data)
+
+# Check if data directory exists, create it if it doesn't
+if not os.path.exists('data'):
+    os.makedirs('data')
+    print("Created 'data' directory")
+else:
+    print("'data' directory already exists")
 
 # Save to CSV
 df.to_csv('data/credit_card_records.csv', index=False)

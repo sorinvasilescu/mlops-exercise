@@ -1,5 +1,6 @@
 import pandas as pd
 import joblib
+import os
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import LabelEncoder
@@ -35,6 +36,9 @@ def train_model(X_train, y_train):
     return model
 
 def save_model(model, filepath):
+    # Create models directory if it doesn't exist (different approach than in generate.py)
+    os.makedirs(os.path.dirname(filepath), exist_ok=True)
+
     joblib.dump(model, filepath)
 
 def test_model(model, X_test, y_test):
