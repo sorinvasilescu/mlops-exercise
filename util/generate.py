@@ -7,6 +7,7 @@ fake = Faker()
 
 # Define the number of rows
 num_rows = 50
+num_rows = 5000
 
 # Generate data
 data = {
