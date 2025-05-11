@@ -1,12 +1,12 @@
 import pandas as pd
 import random
+import os
 from faker import Faker
 
 # Initialize Faker
 fake = Faker()
 
 # Define the number of rows
-num_rows = 50
 num_rows = 5000
 
 # Generate data
@@ -20,6 +20,13 @@ data = {
 
 # Create DataFrame
 df = pd.DataFrame(data)
+
+# Check if data directory exists, create it if it doesn't
+if not os.path.exists('data'):
+    os.makedirs('data')
+    print("Created 'data' directory")
+else:
+    print("'data' directory already exists")
 
 # Save to CSV
 df.to_csv('data/credit_card_records.csv', index=False)
